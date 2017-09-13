@@ -1,0 +1,22 @@
+1
+grep '' ~cs155/pub/hw2Files/ge*.grades
+
+2
+grep -l '' ~cs155/pub/hw2Files/*.{info,log}
+
+3
+grep ';[0-9]/100' ~cs155/pub/hw2Files/*.grades > ~/substandard
+
+4
+mkdir ~/data
+cp ~cs155/pub/hw2Files/*.info ~/data
+
+5
+cut -d';' -f'4' *.grades > ~/classes
+sort -u ~/classes
+
+6
+grep -l '07.04.06' ~cs155/pub/hw2Files/*.log | cut -d/ -f9 | cut -d. -f1 > ~/fire
+
+7
+grep '' ~cs155/pub/hw2Files/*.log | cut -d/ -f9 | cut -d. -f1 | uniq -c | sort -n > ~/log.info
