@@ -1,0 +1,6 @@
+Tue Sep 12 22:13:12 MDT 2017
+Running program runme2
+baton-rouge
+dr-x------ 2 alaswell under 4096 Sep 12  2005 dir_a
+d--------- 2 alaswell under 4096 Sep 12  2005 dir_a
+Linux baton-rouge 4.12.9-200.fc25.x86_64 #1 SMP Fri Aug 25 13:23:30 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux

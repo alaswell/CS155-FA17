@@ -1,0 +1,20 @@
+592c592
+< This is line 592 aint it swell?
+---
+> This is line 592 aint it dandy?
+676c676
+< This is line 676 aint it peachy?
+---
+> This is line 676 aint it swell?
+995c995
+< This is line 995 aint it swell?
+---
+> This is line 995 isnt it swell?
+1233c1233
+< This is line 1233 aint it swell?
+---
+> This is line 1233 aint it horrid?
+1312c1312
+< This is line 1312 aint it smell?
+---
+> This is line 1312 aint it swell?
