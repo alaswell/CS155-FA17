@@ -1,0 +1,69 @@
+#!/bin/bash
+
+# Filename: 	tsp.sh
+# Created by: 	Alex Laswell
+# Date: 	9/13/17
+# Assignment: 	HW4
+# Course:	CS155
+
+# Brief : bash script to classify a triangle
+# Description : script will take the lengths 
+# of a triangle as cmd line args and classify
+# the triangle
+
+reggy='^[1-9]+[0-9]*$'
+
+if [[ "$#" -ne 3 || ! $1 =~ $reggy || ! $2 =~ $reggy || ! $3 =~ $reggy ]]
+then
+        if [[ "$#" -ne 3 ]]
+        then
+                echo "
+		Usage: $0 <int1> <int2> <int3>
+                where all integers >= 1
+                $# is not the correct number of arguments"
+                exit 1
+        else
+                echo "
+		Usage: $0 <int1> <int2> <int3>
+                where all integers >= 1
+                Not a valid integer: $@"
+                exit 1
+        fi
+fi
+
+# Right (1)
+let a=$1*$1
+let b=$2*$2
+let c=$3*$3
+
+if [[ $((a+b)) -eq c || $((b+c)) -eq a || $((c+a)) -eq b ]]
+then
+	echo "right"
+	exit 1
+fi
+
+# Equilateral (2)
+if [[ $1 -eq $2 && $2 -eq $3 ]]
+then
+	echo "equilateral"
+	exit 1
+fi
+
+# Isosceles (3)
+if [[ $1 -eq $2 || $2 -eq $3 || $3 -eq $1 ]]
+then
+	echo "isosceles"
+	exit 1
+fi
+
+# Scalene (4)
+if [[ $(($1+$2)) -gt $3 && $(($2+$3)) -gt $1 && $(($3+$1)) -gt $2 ]]
+then
+	echo "scalene"
+	exit 1
+fi
+
+
+# Not a triangle (5)
+echo "not a triangle"
+exit 1
