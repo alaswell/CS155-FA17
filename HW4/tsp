@@ -13,22 +13,41 @@
 
 reggy='^[1-9]+[0-9]*$'
 
-if [[ "$#" -ne 3 || ! $1 =~ $reggy || ! $2 =~ $reggy || ! $3 =~ $reggy ]]
+if [ "$#" -ne 3 ] 
 then
-        if [[ "$#" -ne 3 ]]
-        then
-                echo "
-		Usage: $0 <int1> <int2> <int3>
-                where all integers >= 1
-                $# is not the correct number of arguments"
-                exit 1
-        else
-                echo "
-		Usage: $0 <int1> <int2> <int3>
-                where all integers >= 1
-                Not a valid integer: $@"
-                exit 1
-        fi
+	echo "
+	Usage: $0 <int1> <int2> <int3>
+	where all integers >= 1
+	$# is not the correct number of arguments"
+	exit 1
+fi
+
+if [[ ! $1 =~ $reggy ]]
+then
+	echo "		
+	Usage: $0 <int1> <int2> <int3>
+	where all integers >= 1
+	Not a valid integer: $1"
+	exit 1
+fi
+
+if [[ ! $2 =~ $reggy ]]
+then
+	echo "		
+	Usage: $0 <int1> <int2> <int3>
+	where all integers >= 1
+	Not a valid integer: $2"
+	exit 1
+fi
+
+
+if [[ ! $3 =~ $reggy ]]
+then
+	echo "		
+	Usage: $0 <int1> <int2> <int3>
+	where all integers >= 1
+	Not a valid integer: $3"
+	exit 1
 fi
 
 # Right (1)
