@@ -1,0 +1,62 @@
+# Default .cshrc for new accounts.  May be modified as needed.
+
+unalias ls
+
+set path = ( $HOME/bin /usr/ucb /bin /usr/bin /usr/local/bin /usr/local/gcc/bin /usr/bin/X11 /usr/X/bin /usr/local/java/bin /s/chopin/f/proj/eclipse )
+setenv LD_LIBRARY_PATH "/usr/local/gcc/lib"
+setenv MANPATH "/usr/share/man:/usr/man:/usr/local/man:/usr/local/gcc/man"
+umask 077
+set history = 25 savehist = 25
+set ignoreeof
+setenv PAGER "less"
+
+#         skip remaining setup if not an interactive shell
+tty > /dev/null
+set s = $status
+if ($s == 1) then
+	exit ($s)
+endif
+
+set host = `hostname` 
+set prompt="${host} %n %~> "
+
+# Remove the following #'s if you want dangerous commands to ask for
+# confirmation.  Default is no confirmation
+#alias cp            'cp -i'
+#alias mv            'mv -i'
+#alias del           'rm -i'
+#alias rm            'rm -i'
+
+alias dir            ls -Alg
+alias la             'ls -AlgF'
+alias help           man
+
+#tcsh settings
+set autocorrect
+#set correct=all
+set autolist
+
+# set up printing commands
+# Note: change guitar to your preferred printer (~info/printers) and uncomment!
+#setenv PRINTER guitar
+# commands to print to default printer
+alias mprint 'mp -o \!* | lpr -h'	# print with header at top of page
+alias mlprint 'mp -o -l \!* | lpr -h'	# print two on a page
+# -P option can be appended to the following, e.g., print -Pguitar file
+alias print 'lpr -h'			# print without header page
+alias pprint enscript -Gh -fNewCenturySchlbk-Roman8 -FTimes-Bold9 # print small
+
+# stty erase ^H kill ^U intr ^C susp ^Z
+
+# set OS specific stuff
+switch (`arch`)
+case i686*:
+# Linux dependent commands go here
+breaksw
+case sun*:
+# SunOS specific commands go here
+breaksw
+default:
+# set stuff for machines not listed above
+breaksw
+endsw

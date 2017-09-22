@@ -1,0 +1,40 @@
+# config file for bash
+
+# Set the default system $PATH:
+PATH="$HOME/bin:/usr/ucb:/bin:/usr/bin:/usr/local/bin:/usr/local/gcc/bin:/usr/bin/X11:/usr/X/
+bin:/usr/local/java/bin:/s/chopin/f/proj/eclipse:."
+
+# Set the values for some environment variables:
+#export LD_LIBRARY_PATH=/usr/local/gcc/lib
+export MANPATH=/usr/share/man:/usr/man:/usr/local/man:/usr/local/gcc/man
+export HOSTNAME="`hostname`"
+# NOTE: Change guitar to your preferred printer (~info/printers) and uncomment:
+#export PRINTER=guitar
+
+# Set a default shell prompt:
+#PS1='`hostname`:`pwd`# '
+if [ "$SHELL" = "/bin/pdksh" -o "$SHELL" = "/bin/ksh" ]; then
+ PS1="! $ "
+elif [ "$SHELL" = "/bin/zsh" ]; then
+ PS1="%m:%~%# "
+elif [ "$SHELL" = "/bin/ash" ]; then
+ PS1="$ "
+else
+ PS1='\h:\w\$ '
+fi
+PS2='> '
+ignoreeof=10
+export PATH DISPLAY LESS TERM PS1 PS2 ignoreeof
+
+umask 077
+
+# takes care of del and backspace
+stty erase ^H kill ^U intr ^C
+
+# safe mode for rm, cp, and mv
+#alias rm='rm -i'
+#alias cp='cp -i'
+#alias mv='mv -i'
+
+# dir lists everything
+alias dir='ls -Alg'
